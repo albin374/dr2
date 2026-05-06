@@ -150,7 +150,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transform: scale(1.15); /* Zoom in to crop out the watermark */
+      transform: scale(1.15);
+      /* Zoom in to crop out the watermark */
       z-index: 0;
     }
 
@@ -1256,44 +1257,125 @@
       background: var(--gold);
     }
 
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 101;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 2px;
+      background: var(--navy);
+      transition: all 0.3s ease;
+    }
+
     /* ── RESPONSIVE / MOBILE FIXES ── */
     @media (max-width: 992px) {
-      .hero-inner, .about, .vision, .footer-top {
+
+      .hero-inner,
+      .about,
+      .vision,
+      .footer-top {
         grid-template-columns: 1fr;
         gap: 3rem;
       }
+
       .stats-band {
         grid-template-columns: 1fr 1fr;
         padding: 3rem 1.5rem;
       }
+
       .ventures-grid {
         grid-template-columns: 1fr;
       }
-      .nav-links {
-        display: none; /* Hide navigation links on mobile to prevent collapsing */
+
+      .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        box-shadow: 0 10px 30px rgba(14, 30, 58, 0.1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease-in-out;
       }
+
+      .nav-menu.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+      }
+
+      .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .hero-video {
+        object-position: center top;
+      }
+
       nav {
         padding: 1rem 1.5rem;
       }
+
       .hero-inner {
         padding: 7rem 1.5rem 3rem;
       }
-      .about, .ventures, .vision, .philosophy, footer {
+
+      .about,
+      .ventures,
+      .vision,
+      .philosophy,
+      footer {
         padding: 4rem 1.5rem;
       }
+
       .hero-stats {
         flex-wrap: wrap;
         gap: 1.5rem;
       }
+
       .hero-right {
         align-items: flex-start;
       }
+
       .hero-info-card {
         max-width: 100%;
       }
+
       .hero-title {
         font-size: 3rem;
       }
+
       .stat-divider {
         display: none;
       }
@@ -1311,14 +1393,20 @@
 
   <!-- NAVBAR -->
   <nav id="navbar">
-    <img src="media/logo.png" alt="Dr. Noushad Logo" class="nav-logo" style="height: 40px; width: auto; object-fit: contain;">
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#ventures">Ventures</a></li>
-      <li><a href="#vision">Vision</a></li>
-      <li><a href="#philosophy">Insights</a></li>
-    </ul>
-    <a href="#connect" class="nav-cta">Connect</a>
+    <img src="media/logo.png" alt="Dr. Noushad Logo" class="nav-logo"
+      style="height: 40px; width: auto; object-fit: contain;">
+    <div class="nav-menu" id="nav-menu">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#ventures">Ventures</a></li>
+        <li><a href="#vision">Vision</a></li>
+        <li><a href="#philosophy">Insights</a></li>
+      </ul>
+      <a href="#connect" class="nav-cta">Connect</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </nav>
 
   <!-- ═══════════════════════════════════════════════
@@ -1335,11 +1423,7 @@
     <div class="hero-overlay"></div>
 
 
-    <!-- ④ Geometric rings — z-index 2 -->
-    <div class="geo-shape geo-ring"></div>
-    <div class="geo-shape geo-ring-sm"></div>
-    <div class="geo-shape geo-diamond"></div>
-    <div class="geo-shape geo-line"></div>
+
 
     <!-- ⑤ Page content — z-index 3 (on top of everything) -->
     <div class="hero-inner">
@@ -1646,7 +1730,7 @@
   <footer id="connect">
     <div class="footer-top">
       <div>
-        <div class="footer-brand-name">Dr. <span>Noushad</span> Abdurahiman</div>
+        <img src="media/logo.png" alt="Dr. Noushad Logo" class="footer-brand-logo" style="height: 60px; width: auto; object-fit: contain; margin-bottom: 0.8rem;">
         <div class="footer-brand-sub">CEO — THESAY INV.</div>
         <p class="footer-brand-desc">Visionary leader, entrepreneurial innovator, and global influencer dedicated to
           transforming industries and mentoring the next generation of leaders worldwide.</p>
@@ -1683,7 +1767,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2024 Dr. Noushad Abdurahiman. All rights reserved.</div>
+      <div class="footer-copy">© 2026 Dr. Noushad Abdurahiman. All rights reserved.</div>
       <div class="footer-copy">Powered by <span class="footer-gold">THESAY INV.</span></div>
     </div>
   </footer>
@@ -1692,6 +1776,20 @@
     const nav = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
     });
 
     const reveals = document.querySelectorAll('.reveal');
