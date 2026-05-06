@@ -169,14 +169,18 @@
 
     /* 1. Base .hero-video rule (Desktop) */
     .hero-video {
-      position: absolute; /* Positions the video absolutely within the hero container */
-      top: 0; /* Aligns to the top edge */
-      left: 0; /* Aligns to the left edge */
-      width: 100%; /* Forces the video to span the full width of the screen */
-      height: 100%; /* Forces the video to span the full height of the hero section */
-      object-fit: cover; /* Ensures the video completely covers the container without distorting its aspect ratio */
-      transform: scale(1.15); /* Zooms the video in by 15% on desktop to crop out the watermark around the edges */
-      z-index: 0; /* Keeps the video behind all other content */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      /* anchor to top so face stays in frame */
+      transform: scale(1.15);
+      transform-origin: center top;
+      /* zoom from top, not center */
+      z-index: 0;
     }
 
     /* Dark gradient overlay so text stays legible */
@@ -1379,8 +1383,11 @@
 
       /* 2. Mobile override inside @media (max-width: 992px) */
       .hero-video {
-        transform: scale(1); /* Removes the aggressive 1.15x zoom on small screens to prevent the subject from being pushed out of frame */
-        object-position: 85% center; /* Shifts the video's anchor point to the right-center, ensuring the subject's face remains fully visible despite the vertical cropping */
+        transform: scale(1);
+        /* no zoom on mobile */
+        transform-origin: top center;
+        object-position: 72% top;
+        /* shift right so face shows on left side */
       }
 
       nav {
