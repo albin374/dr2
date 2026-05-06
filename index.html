@@ -55,13 +55,15 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.2rem 4rem;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      transition: box-shadow 0.3s;
+      background: transparent;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
     }
 
     nav.scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
       box-shadow: 0 4px 40px rgba(14, 30, 58, 0.08);
     }
 
@@ -1341,7 +1343,8 @@
 
       .hero-video {
         object-position: center top;
-        transform: scale(1); /* Zoom out on mobile */
+        transform: scale(1);
+        /* Zoom out on mobile */
       }
 
       nav {
@@ -1394,7 +1397,8 @@
 
   <!-- NAVBAR -->
   <nav id="navbar">
-    <img src="https://drnoushad.com/img/bosssign3.png" alt="Dr. Noushad Logo" class="nav-logo" style="height: 40px; width: auto; object-fit: contain;">
+    <img src="https://drnoushad.com/img/bosssign3.png" alt="Dr. Noushad Logo" class="nav-logo"
+      style="height: 40px; width: auto; object-fit: contain;">
     <div class="nav-menu" id="nav-menu">
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
@@ -1729,8 +1733,9 @@
   <footer id="connect">
     <div class="footer-top">
       <div>
-        <img src="https://drnoushad.com/img/bosssign3.png" alt="Dr. Noushad Logo" class="footer-brand-logo" style="height: 60px; width: auto; object-fit: contain; margin-bottom: 0.8rem;">
-        <div class="footer-brand-sub">CEO — THESAY INV.</div>
+        <img src="https://drnoushad.com/img/bosssign3.png" alt="Dr. Noushad Logo" class="footer-brand-logo"
+          style="height: 60px; width: auto; object-fit: contain; margin-bottom: 0.8rem;">
+
         <p class="footer-brand-desc">Visionary leader, entrepreneurial innovator, and global influencer dedicated to
           transforming industries and mentoring the next generation of leaders worldwide.</p>
       </div>
