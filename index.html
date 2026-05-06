@@ -67,12 +67,35 @@
       box-shadow: 0 4px 40px rgba(14, 30, 58, 0.08);
     }
 
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      font-weight: 600;
+    nav.scrolled .nav-logo {
+      filter: none;
+    }
+
+    nav.scrolled .nav-links a {
+      color: var(--slate);
+    }
+
+    nav.scrolled .nav-links a:hover {
       color: var(--navy);
-      letter-spacing: 0.02em;
+    }
+
+    nav.scrolled .nav-cta {
+      border-color: var(--navy);
+      color: var(--navy);
+    }
+
+    nav.scrolled .nav-cta:hover {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    nav.scrolled .hamburger span {
+      background: var(--navy);
+    }
+
+    .nav-logo {
+      filter: brightness(0) invert(1);
+      transition: filter 0.3s ease;
     }
 
     .nav-logo span {
@@ -90,7 +113,7 @@
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--slate);
+      color: var(--white);
       text-decoration: none;
       transition: color 0.2s;
       position: relative;
@@ -118,9 +141,9 @@
 
     .nav-cta {
       padding: 0.5rem 1.4rem;
-      border: 1px solid var(--navy);
+      border: 1px solid var(--white);
       background: transparent;
-      color: var(--navy);
+      color: var(--white);
       font-family: var(--font-body);
       font-size: 0.8rem;
       letter-spacing: 0.1em;
@@ -131,8 +154,8 @@
     }
 
     .nav-cta:hover {
-      background: var(--navy);
-      color: var(--white);
+      background: var(--white);
+      color: var(--navy);
     }
 
     /* ── HERO ── */
@@ -144,17 +167,16 @@
       align-items: center;
     }
 
-    /* VIDEO — single tag, covers entire hero */
+    /* 1. Base .hero-video rule (Desktop) */
     .hero-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.15);
-      /* Zoom in to crop out the watermark */
-      z-index: 0;
+      position: absolute; /* Positions the video absolutely within the hero container */
+      top: 0; /* Aligns to the top edge */
+      left: 0; /* Aligns to the left edge */
+      width: 100%; /* Forces the video to span the full width of the screen */
+      height: 100%; /* Forces the video to span the full height of the hero section */
+      object-fit: cover; /* Ensures the video completely covers the container without distorting its aspect ratio */
+      transform: scale(1.15); /* Zooms the video in by 15% on desktop to crop out the watermark around the edges */
+      z-index: 0; /* Keeps the video behind all other content */
     }
 
     /* Dark gradient overlay so text stays legible */
@@ -1276,7 +1298,7 @@
     .hamburger span {
       width: 25px;
       height: 2px;
-      background: var(--navy);
+      background: var(--white);
       transition: all 0.3s ease;
     }
 
@@ -1325,6 +1347,20 @@
         gap: 1.5rem;
       }
 
+      .nav-menu .nav-links a {
+        color: var(--slate);
+      }
+
+      .nav-menu .nav-cta {
+        border-color: var(--navy);
+        color: var(--navy);
+      }
+
+      .nav-menu .nav-cta:hover {
+        background: var(--navy);
+        color: var(--white);
+      }
+
       .hamburger {
         display: flex;
       }
@@ -1341,10 +1377,10 @@
         transform: translateY(-7px) rotate(-45deg);
       }
 
+      /* 2. Mobile override inside @media (max-width: 992px) */
       .hero-video {
-        object-position: center top;
-        transform: scale(1);
-        /* Zoom out on mobile */
+        transform: scale(1); /* Removes the aggressive 1.15x zoom on small screens to prevent the subject from being pushed out of frame */
+        object-position: 85% center; /* Shifts the video's anchor point to the right-center, ensuring the subject's face remains fully visible despite the vertical cropping */
       }
 
       nav {
@@ -1582,29 +1618,7 @@
     </div>
   </section>
 
-  <!-- STATS BAND -->
-  <section class="stats-band">
-    <div class="stat-item reveal">
-      <div class="stat-num">20<span class="stat-suffix">+</span></div>
-      <div class="stat-label">Years of Business Excellence</div>
-      <div class="stat-divider"></div>
-    </div>
-    <div class="stat-item reveal reveal-delay-1">
-      <div class="stat-num">25<span class="stat-suffix">+</span></div>
-      <div class="stat-label">Countries Represented Globally</div>
-      <div class="stat-divider"></div>
-    </div>
-    <div class="stat-item reveal reveal-delay-2">
-      <div class="stat-num">100<span class="stat-suffix">+</span></div>
-      <div class="stat-label">Successful Global Partnerships</div>
-      <div class="stat-divider"></div>
-    </div>
-    <div class="stat-item reveal reveal-delay-3">
-      <div class="stat-num">500<span class="stat-suffix">+</span></div>
-      <div class="stat-label">Industry Collaborations</div>
-      <div class="stat-divider"></div>
-    </div>
-  </section>
+
 
   <!-- VENTURES -->
   <section class="ventures" id="ventures">
