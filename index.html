@@ -1255,6 +1255,55 @@
     ::-webkit-scrollbar-thumb {
       background: var(--gold);
     }
+
+    /* ── RESPONSIVE / MOBILE FIXES ── */
+    @media (max-width: 992px) {
+      .hero-inner, .about, .vision, .footer-top {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .stats-band {
+        grid-template-columns: 1fr 1fr;
+        padding: 3rem 1.5rem;
+      }
+      .ventures-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none; /* Hide navigation links on mobile to prevent collapsing */
+      }
+      nav {
+        padding: 1rem 1.5rem;
+      }
+      .hero-inner {
+        padding: 7rem 1.5rem 3rem;
+      }
+      .about, .ventures, .vision, .philosophy, footer {
+        padding: 4rem 1.5rem;
+      }
+      .hero-stats {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+      .hero-right {
+        align-items: flex-start;
+      }
+      .hero-info-card {
+        max-width: 100%;
+      }
+      .hero-title {
+        font-size: 3rem;
+      }
+      .stat-divider {
+        display: none;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .stats-band {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
@@ -1262,7 +1311,7 @@
 
   <!-- NAVBAR -->
   <nav id="navbar">
-    <div class="nav-logo">Dr. <span>Noushad</span></div>
+    <img src="media/logo.png" alt="Dr. Noushad Logo" class="nav-logo" style="height: 40px; width: auto; object-fit: contain;">
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#ventures">Ventures</a></li>
